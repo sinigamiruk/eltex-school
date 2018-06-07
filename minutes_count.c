@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
  
-/* коилчество минут */
+/* колличество минут */
 #define minutes_count 10
  
 int main()

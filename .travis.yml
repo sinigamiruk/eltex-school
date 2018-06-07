@@ -1,14 +1,15 @@
-dict:xemol
+languadge: c
 os:
     -linux
 compiler:
     -gcc
-installer:
-    -sourse scriptsh
 script:
-    -gcc main.c
-sudo:true [false]
-provider:releases
-api-key:
-    secure:cKEYs
-
+    make
+diploy:
+    provider: releases
+    api-key:
+        secure:$eltex-school
+    file:
+        -minutes_count.c
+    on:
+        tegs:true
