@@ -1,0 +1,14 @@
+dict:xemol
+os:
+    -linux
+compiler:
+    -gcc
+installer:
+    -sourse scriptsh
+script:
+    -gcc main.c
+sudo:true [false]
+provider:releases
+api-key:
+    secure:cKEYs
+
