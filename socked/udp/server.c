@@ -6,7 +6,7 @@
 int main()
 {
 	int skd;
-	char msg[MSG_SIZE];
+	char msg[SIZE];
 	sockaddr_t client, server;
 	socklen_t length = sizeof(sockaddr_t);
 	if ((skd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0)
@@ -25,15 +25,15 @@ int main()
 	}
 	while (1) 
 	{
-		if (recvfrom(skd, msg, MSG_SIZE, 0, &client, &length) < 0)
+		if (recvfrom(skd, msg, SIZE, 0, &client, &length) < 0)
 		{
 			printf("Can not recieve from UDP socket");
 			exit(3);
 		}
 		printf("UDP server received from client: %s\n", msg);
-		char resp[MSG_SIZE] = "mod:";
-		strncat(resp, msg, MSG_SIZE - strlen(resp) - 1);
-		if (sendto(skd, resp, MSG_SIZE, 0, &client, length) < 0)
+		char resp[SIZE] = "mod:";
+		strncat(resp, msg, SIZE - strlen(resp) - 1);
+		if (sendto(skd, resp, SIZE, 0, &client, length) < 0)
 		{
 			printf("can not send to UDP socket");
 			exit(4);

@@ -5,7 +5,7 @@
 
 int main(){
 	int skd;
-	char msg[MSG_SIZE];
+	char msg[SIZE];
 	sockaddr_t server;
 	socklen_t length = sizeof(sockaddr_t);
 	if ((skd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0){
@@ -17,7 +17,7 @@ int main(){
 	server.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 	server.sin_port = htons(PORT);
 	while (1){
-		if (!fgets(msg, MSG_SIZE, stdin)){
+		if (!fgets(msg, SIZE, stdin)){
 			printf("can not read message!\n");
 			exit(6);
 		}
@@ -25,13 +25,13 @@ int main(){
 		if (endl){
 			*endl = '\0';
 		}
-		if (sendto(skd, msg, MSG_SIZE, 0, &server, length) < 0){
+		if (sendto(skd, msg, SIZE, 0, &server, length) < 0){
 			printf("can not send to UDP socket");
 			exit(4);
 		}
 		printf("UDP client sended: %s\n", msg);
-		char resp[MSG_SIZE];
-		if (recvfrom(skd, resp, MSG_SIZE, 0, &server, &length) < 0){
+		char resp[SIZE];
+		if (recvfrom(skd, resp, SIZE, 0, &server, &length) < 0){
 			printf("Can not recieve from UDP socket");
 			exit(3);
 		}

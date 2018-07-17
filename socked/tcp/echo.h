@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 
 #define PORT 50451
-#define MSG_SIZE 512
+#define SIZE 512
 
 typedef struct sockaddr_in sockaddr_t;
 
