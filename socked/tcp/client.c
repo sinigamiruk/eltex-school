@@ -9,7 +9,7 @@ int main(){
 	sockaddr_t server;
 	socklen_t length = sizeof(sockaddr_t);
 	if ((serv_skd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0){
-		perror("can not get TCP socket");
+		printf("can not get TCP socket");
 		exit(1);
 	}
 	memset(&server, 0, sizeof(sockaddr_t));
@@ -17,7 +17,7 @@ int main(){
 	server.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 	server.sin_port = htons(PORT);
 	if (connect(serv_skd, &server, length) < 0) {
-		perror("can not connect with TCP server");
+		printf("can not connect with TCP server");
 		exit(5);
 	}
 
@@ -31,13 +31,13 @@ int main(){
 			*endl = '\0';
 		}
 		if (send(serv_skd, msg, SIZE, 0) < 0){
-			perror("can not send to TCP socket");
+			printf("can not send to TCP socket");
 			exit(4);
 		}
 		printf("TCPClient sended: %s\n", msg);
 		char resp[SIZE];
 		if (recv(serv_skd, resp, SIZE, 0) < 0) {
-			perror("can not recieve from TCP socket");
+			printf("can not recieve from TCP socket");
 			exit(3);
 		}
 		printf("TCP client received from server: %s\n", resp);
